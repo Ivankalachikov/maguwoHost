@@ -1,0 +1,45 @@
+@import "mixin.less";
+@import "variables.less";
+
+.page-footer{
+	background: rgba(32, 34, 66, 0.9) url("../img/footer-map.png") left no-repeat;
+	padding-top: 146px;
+	padding-bottom: 72px;
+	//background-size: contain;
+	
+	&__inner{
+		.inner();
+		.clr();
+		text-align: center;
+	}
+
+	&__navigation{
+		float: right;
+	}
+
+	&__to-top{
+		font-size: 0.857rem;
+		clear: both;
+		color: @text-white;
+		text-decoration: none;
+		&:hover{
+			color: @text-yellow;
+		}
+	}
+
+	&__copyright{
+		clear: both;
+		color: @text-white;
+	}
+
+	&__copyright-logo{
+		padding-top: 28px;
+		margin-bottom: 18px;
+	}
+
+	&__copyright-link{
+		color: @text-white;
+		text-decoration: none;
+	}
+}
+

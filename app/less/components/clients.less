@@ -1,0 +1,57 @@
+@import "mixin.less";
+@import "variables.less";
+
+.clients{
+	&__inner{
+		.inner();
+		padding-top: 87px;
+		padding-bottom: 40px;
+		display: table;
+	}
+
+	&__text-block{
+		float: left;
+		height: 100%;
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	&__title{
+		font-size: 2.57rem;
+		font-weight: 700;
+		margin-bottom: 20px;
+	}
+
+	&__text{
+		font-size: 1rem;
+		color: @text-gray;
+		width: 325px;
+	}
+
+	&__item{
+		margin-left: 25px;
+		margin-bottom: 15px;
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	&__item-img{
+		
+		&:hover{
+			box-shadow: 5px 5px 5px -1px #242424;
+		}
+
+		&--1{
+			.sprite(@clients-logo-1);
+		}
+		&--2{
+			.sprite(@clients-logo-2);
+		}
+		&--3{
+			.sprite(@clients-logo-3);
+		}
+		&--4{
+			.sprite(@clients-logo-4);
+		}
+	}
+}

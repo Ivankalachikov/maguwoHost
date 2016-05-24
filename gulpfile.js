@@ -12,7 +12,8 @@ var gulp = require('gulp'),
 		del         = require('del'),
 		imagemin    = require('gulp-imagemin'),
     pngquant    = require('imagemin-pngquant'),
-    cache       = require('gulp-cache');
+    cache       = require('gulp-cache'),
+    spritesmith = require('gulp.spritesmith');
 
 
 
@@ -27,6 +28,23 @@ gulp.task('less', function () {
 });
 
 
+gulp.task('sprite', function() {
+    var spriteData = 
+        gulp.src('app/img/sprite/*.*') // путь, откуда берем картинки для спрайта
+            .pipe(spritesmith({
+                imgName: 'sprite.png',
+                imgPath: '../img/sprite.png',
+                cssTemplate: 'app/less/sprite.less.template.mustache',
+                cssName: 'sprite.less',
+                cssFormat: 'less',
+                algorithm: 'binary-tree',
+            }));
+
+    spriteData.img.pipe(gulp.dest('app/img/')); // путь, куда сохраняем картинку
+    spriteData.css.pipe(gulp.dest('app/less/')); // путь, куда сохраняем стили
+});
+
+
 
 
 gulp.task('css-libs', ['less'], function() {
@@ -37,7 +55,14 @@ gulp.task('css-libs', ['less'], function() {
      		.pipe(autoprefixer({
 					browsers: ['last 3 version', '> 3%'],
 					cascade: false
-				}))
+				}).on( 'error', notify.onError(
+            {
+            message: "<%= error.message %>",
+            title  : "Autoprefixer Error!"
+             } ) ))
+
+
+            
         .pipe(cssnano().on( 'error', notify.onError(
      		{
         	message: "<%= error.message %>",

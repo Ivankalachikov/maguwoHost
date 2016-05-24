@@ -1,0 +1,48 @@
+@import "mixin.less";
+@import "variables.less";
+
+
+.testimonials-item{
+	display: inline-block;
+	background-color: rgba(245, 243, 243, 0.5);
+	width: 24%;
+	margin-left: 4%;
+	padding-top: 30px;
+	padding-left: 20px;
+	padding-right: 30px;
+	color: @text-dark-gray;
+	margin-bottom: 111px;
+	position: relative;
+	&:hover &__img{
+			border:2px solid @bg-yellow;
+			border-radius:50%;
+			right: 18px;
+			bottom: -72px;
+	}
+
+	&:hover &__name{
+		color: @text-yellow;
+	}
+
+	&__text{
+		margin-bottom: 20px;
+		font-family: "roboto slab",serif;
+	}
+
+	&__name{
+		font-size: 1.143rem;
+		color: derken(@text-dark-gray,30);
+		font-weight: 700;
+
+		&:before{
+			content: '-';
+		}
+	}
+
+	&__img{
+		position: absolute;
+		.sprite(@testimonials-1);
+		right: 20px;
+		bottom:-70px;
+	}
+}

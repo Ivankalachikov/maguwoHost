@@ -1,7 +1,11 @@
 @import "variables.less";
 
 .inner(){
-	
+	width: 84%;
+	margin: 0 auto;
+	@media(min-width:960px) and (max-width:1200px){
+		width: 96%;
+	}
 }
 
 .clr(){
@@ -9,5 +13,31 @@
 		content:"";
 		display: table;
 		clear:both;
+	}
+}
+
+.btn{
+	display: inline-block;
+	text-align: center;
+	text-transform: capitalize;
+	padding: 15px 30px;
+	cursor: pointer;
+	&--yellow{
+		background-color: @bg-yellow;
+		color: @text-dark-blue;
+		&:hover,
+		&:active{
+			background-color: darken(@bg-yellow,10);
+		}
+	}
+
+	&--white-border{
+		border:2px solid @text-white;
+		font-size: 1.29rem;
+		padding: 20px 56px;
+		&:hover,
+		&:active{
+			background-color: rgba(255,255,255,.4);
+		}
 	}
 }

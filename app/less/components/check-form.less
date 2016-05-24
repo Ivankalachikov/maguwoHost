@@ -1,0 +1,45 @@
+@import "mixin.less";
+@import "variables.less";
+
+.check-form {
+	background-color:  rgba(255, 255, 255, 0.5);
+	padding: 18px;
+	display: inline-block;
+	vertical-align: middle;
+	
+	&__form{
+		font-size: 0;
+	}
+
+	&__input-text{
+		padding: 20px 22px;
+		width: 240px;
+		font-size: 1rem;
+		border:none;
+		outline:none;
+		font-size: 1.29rem;
+		color: @text-dark-blue;
+	}
+
+	&__input-select{
+		color: @text-dark-blue;
+		background-color: @bg-yellow;
+		padding: 20px 22px;
+		font-size: 1rem;
+		border:none;
+		outline:none;
+		font-weight: 700;
+		font-size: 1.29rem;
+	}
+
+	&__input-btn{
+		padding: 24px 22px;
+		font-size: 1rem;
+		border:none;
+		border-left: 1px solid @text-white;
+		outline:none;
+		color: @text-white;
+		position: relative;
+    top: -2px;
+	}
+}

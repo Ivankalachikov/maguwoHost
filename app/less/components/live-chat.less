@@ -1,0 +1,30 @@
+@import "mixin.less";
+@import "variables.less";
+@import "typography.less";
+
+.live-chat{
+	display: table-cell;
+	vertical-align: middle;
+	width: 35%;
+	padding-left: 3.5%;
+
+	&__title{
+		font-size: 0.86rem;
+		margin-bottom: 22px;
+	}
+
+	&__phone-link{
+		color: @text-dark-blue;
+		font-weight: 700;
+		font-size: 1.14rem;
+		text-decoration: none;
+		padding-left: 22px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		border-left: 1px solid darken(@border-gray,20);
+	}
+
+	&__btn{
+		margin-right: 22px;
+	}
+}

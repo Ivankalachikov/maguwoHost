@@ -2,6 +2,21 @@
 @import "variables.less";
 
 .page-header{
-	
+	&__inner{
+		.inner();
+		.clr();
+		display: table;
+		min-height:147px;
+	}
 
+	&__logo-wrap{
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	&__logo-img{
+		.sprite(@header-logo);
+	}
 }
+
+
