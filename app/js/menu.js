@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	document.addEventListener('click', function (event){
 		if (event.target.closest('.page-nav__icon') == null){
 			menu.classList.add('hidden');
-		}
+		};
 	});
 
 	function resize() { 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     else{
     	menu.classList.add('hidden');
     	icon.classList.remove('hidden');
-    }
+    };
   }
 
   window.onresize = resize;

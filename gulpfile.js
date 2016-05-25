@@ -1,19 +1,21 @@
 var gulp = require('gulp'),
-		less = require('gulp-less'),
-		browserSync = require('browser-sync').create(),
-		cssnano     = require('gulp-cssnano'),
-		rename      = require('gulp-rename'),
-		concatCss = require('gulp-concat-css'),
-		autoprefixer = require('gulp-autoprefixer'),
-		notify = require("gulp-notify"),
-		mmq = require('gulp-merge-media-queries')
-		uglify = require('gulp-uglify'),
-		concat = require('gulp-concat'),
-		del         = require('del'),
-		imagemin    = require('gulp-imagemin'),
-    pngquant    = require('imagemin-pngquant'),
-    cache       = require('gulp-cache'),
-    spritesmith = require('gulp.spritesmith');
+less = require('gulp-less'),
+browserSync = require('browser-sync').create(),
+cssnano     = require('gulp-cssnano'),
+rename      = require('gulp-rename'),
+concatCss = require('gulp-concat-css'),
+autoprefixer = require('gulp-autoprefixer'),
+notify = require("gulp-notify"),
+mmq = require('gulp-merge-media-queries')
+uglify = require('gulp-uglify'),
+concat = require('gulp-concat'),
+del         = require('del'),
+imagemin    = require('gulp-imagemin'),
+pngquant    = require('imagemin-pngquant'),
+cache       = require('gulp-cache'),
+spritesmith = require('gulp.spritesmith'),
+htmlmin = require('gulp-htmlmin'),
+autopolyfiller = require('gulp-autopolyfiller');
 
 
 
@@ -77,11 +79,12 @@ gulp.task('css-libs', ['less'], function() {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('app/js/*.js')
-  	del(['all.js'])
-  	//.pipe(concat('all.js'))
-    //.pipe(uglify('all.js'))
-    .pipe(gulp.dest('app/js'));
+  return gulp.src(['app/js/*.js','!app/js/all.js'])
+  	// del(['all.js'])
+    .pipe(concat('all.js'))
+    .pipe(autopolyfiller())
+    .pipe(uglify())
+    .pipe(gulp.dest('app/js/all.js'));
 });
 
 
@@ -107,7 +110,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('img', function() {
-    return gulp.src('app/img/**/*') // Берем все изображения из app
+    return gulp.src(['app/img/**/*','!app/img/sprite/','!app/img/sprite/**']) // Берем все изображения из app
         .pipe(cache(imagemin({  // Сжимаем их с наилучшими настройками с учетом кеширования
             interlaced: true,
             progressive: true,
@@ -120,6 +123,13 @@ gulp.task('img', function() {
 gulp.task('clear', function () {
     return cache.clearAll();
 })
+
+gulp.task('minhtml', function() {
+  return gulp.src('app/*.html')
+    .pipe(rename({suffix: '.min'}))
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('app'))
+});
 
 
 ///////////  -- Непосредственно сам продакшен
@@ -134,7 +144,7 @@ gulp.task('build', ['clean', 'img', 'less', 'css-libs', 'scripts'], function() {
     var buildFonts = gulp.src('app/fonts/**/*') // Переносим шрифты в продакшен
     .pipe(gulp.dest('dist/fonts'))
 
-    var buildJs = gulp.src('app/js/**/*') // Переносим скрипты в продакшен
+    var buildJs = gulp.src(['app/js/all.js']) // Переносим скрипты в продакшен
     .pipe(gulp.dest('dist/js'))
 
     var buildHtml = gulp.src('app/*.html') // Переносим HTML в продакшен
