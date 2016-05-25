@@ -5,7 +5,7 @@
 .testimonials-item{
 	display: inline-block;
 	background-color: rgba(245, 243, 243, 0.5);
-	width: 24%;
+	width: 22%;
 	margin-left: 4%;
 	padding-top: 30px;
 	padding-left: 20px;
@@ -13,6 +13,23 @@
 	color: @text-dark-gray;
 	margin-bottom: 111px;
 	position: relative;
+
+	@media screen and (max-width:768px){
+		display: block;
+		width: 50%;
+
+		&:nth-child(even){
+			float: right;
+			margin-bottom: 15px;
+		}
+		&:nth-child(odd){
+			float: left;
+			margin-bottom: 75px;
+		}
+	}
+
+
+
 	&:hover &__img{
 			border:2px solid @bg-yellow;
 			border-radius:50%;

@@ -6,9 +6,15 @@
 	&__inner{
 		.inner();
 		padding-top: 40px;
+
+		@media screen and (max-width:640px){
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
 	}
 
 	&__wrap-items{
 		margin-left: -4%;
+		.clr();
 	}
 }

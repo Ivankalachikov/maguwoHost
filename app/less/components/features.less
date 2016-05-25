@@ -8,6 +8,10 @@
 		padding-top: 98px;
 		text-align: center;
 		width: 100%;
+
+		@media screen and (max-width:640px){
+			padding-top: 30px;
+		}
 	}
 
 	&__title{
@@ -16,26 +20,47 @@
 		font-weight: 700;
 		margin-top: 0;
 		margin-bottom: 30px;
+
+		@media screen and (max-width:640px){
+			margin-bottom: 20px;
+		}
 	}
 
 	&__text{
 		color: @text-dark-blue;
 		font-size: 1.71rem;
 		margin-bottom: 88px;
+
+		@media screen and (max-width:640px){
+			margin-bottom: 30px;
+		}
 	}
 
 	&__item-wrap{
-		margin-left: -58px;
+		margin-left: -3%;
+
+		@media screen and (max-width:640px){
+			margin-left: 0;
+		}
 	}
 
 }
 
 .features-item{
 	display: inline-block;
-	width: 240px;
-	margin-left: 58px;
+	width: 20%;
+	margin-left: 3%;
 	margin-bottom: 122px;
 	vertical-align: top;
+	@media screen and (max-width:960px){
+		width: 45%;
+	}
+
+	@media screen and (max-width:640px){
+		width: 90%;
+		margin-left: 0;
+		margin-bottom: 35px;
+	}
 
 	&:hover &__img{
 			animation: up-down 1s infinite ease;
@@ -44,6 +69,10 @@
 	&__img{
 		margin: 0 auto;
 		margin-bottom: 68px;
+
+		@media screen and (max-width:640px){
+			margin-bottom: 20px;
+		}
 	}
 
 	&__img--ls{
@@ -69,6 +98,11 @@
 		margin-bottom: 26px;
 		position: relative;
 		font-family: "roboto slab",serif;
+
+		@media screen and (max-width:640px){
+			font-size: 1.9rem;
+			margin-bottom: 20px;
+		}
 		
 		&::before{
 			position: absolute;
@@ -79,6 +113,12 @@
 			height: 3px;
 			width: 69px;
 			background-color: darken(@border-gray,20);
+
+			@media screen and (max-width:640px){
+				top: -10px;
+				width: 100px;
+				margin-left: -50px;
+			}
 		}
 	}
 }

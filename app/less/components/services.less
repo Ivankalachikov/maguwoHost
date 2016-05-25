@@ -4,19 +4,32 @@
 .services{
 	display: table;
 	width: 100%;
+	table-layout: fixed;
 
 	&__item{
 		display: table-cell;
-		width: 50%;
 		padding-top: 116px;
 		text-align: center;
 		padding-bottom: 104px;
+
+		@media screen and (max-width:640px){
+			display: block;
+		}
 
 		&--blue{
 			background-color: @bg-dark-blue;
 			color: @text-white;
 			padding-right: 5%;
 			padding-left: 13%;
+
+			@media screen and (max-width:1200px){
+				padding-right: 4%;
+				padding-left: 10%;
+			}
+
+			@media screen and (max-width:768px){
+				padding: 30px 20px;
+			}
 		}
 
 		&--yellow{
@@ -25,16 +38,37 @@
 			padding-top: 50px;
 			padding-right: 13%;
 			padding-left: 5%;
+
+			@media screen and (max-width:1200px){
+				padding-right: 10%;
+				padding-left: 4%;
+			}
+
+			@media screen and (max-width:768px){
+				padding: 30px 20px;
+			}
 		}
 	}
 
 	&__logo{
 		margin-bottom: 56px;
+
+		@media screen and (max-width:640px){
+			& svg{
+				width: 100px;
+			}
+			margin-bottom: 30px;
+
+		}
 	}
 
 	&__title{
 		font-size: 2.57rem;
 		font-weight: 700;
+
+		@media screen and (max-width:640px){
+			font-size: 2rem;
+		}
 	}
 
 	&__text{

@@ -7,11 +7,28 @@
 		.clr();
 		display: table;
 		min-height:147px;
+		
+		@media screen and (max-width:1200px){
+			display: block;
+			min-height: 100px;
+		}
+		@media screen and (max-width:768px){
+			padding-top: 50px;
+			position: relative;
+		}
+		@media screen and (max-width:425px){
+			padding-top: 20px;
+			min-height: auto;
+			padding-bottom: 20px;
+		}
 	}
 
 	&__logo-wrap{
 		display: table-cell;
 		vertical-align: middle;
+		@media screen and (max-width:768px){
+			float: left;
+		}
 	}
 
 	&__logo-img{
